@@ -5,9 +5,7 @@
   <div class="main inline">
     <div class="cards-column">
       <div class="header-name">
-        <div>
-          <img src="./images/todo.png">
-        </div>
+        <plus-icon></plus-icon>
         <p>to do</p>
       </div>
       <template
@@ -16,9 +14,7 @@
       >
         <div class="card">
           <h2 class="card-title">{{ card.title }}</h2>
-          <div class="figure-block">
-            <figure class="to-do-square" />
-          </div>
+          <square style="background-color: var(--to-do-color)"></square>
           <div class="description-block">
             <p class="description">
               {{card.description}}
@@ -41,9 +37,7 @@
       >
         <div class="card">
           <h2 class="card-title">{{ card.title }}</h2>
-          <div class="figure-block">
-            <figure class="to-do-square" />
-          </div>
+          <square style="background-color: var(--in-work-color)"></square>
           <div class="description-block">
             <p class="description">
               {{card.description}}
@@ -57,9 +51,7 @@
     </div>
     <div class="cards-column">
       <div class="header-name new">
-        <div>
-          <img src="./images/done.png">
-        </div>
+        <check-icon></check-icon>
         <p>done</p>
       </div>
       <template
@@ -68,9 +60,7 @@
       >
         <div class="card">
           <h2 class="card-title">{{ card.title }}</h2>
-          <div class="figure-block">
-            <figure class="to-do-square" />
-          </div>
+          <square style="background-color: var(--done-color)"></square>
           <div class="description-block">
             <p class="description">
               {{card.description}}
@@ -87,11 +77,17 @@
 
 <script>
 import caseIcon from './components/icons/caseIcon.vue'
+import checkIcon from './components/icons/checkIcon.vue'
+import plusIcon from './components/icons/plusIcon.vue'
+import square from './components/square.vue'
 
 export default {
   components: {
-    caseIcon
-  },
+    caseIcon,
+    checkIcon,
+    plusIcon,
+    square
+},
   data() {
     return {
       cards: {
@@ -99,7 +95,7 @@ export default {
           {
             title: 'Create a design for canban task-site',
             description: 'Create a design for canban task-site',
-            date: new Date()
+            date: new Date(),
           },
           {
             title: 'Creating UI',
@@ -197,19 +193,7 @@ h2 {
   width: 100%;
 }
 
-figure {
-  height: 42px;
-  width:42px;
-  border-radius: 15px;
-  transform: rotate(45deg);
-  margin: 0 !important;
-}
-
-.to-do-square {
-  background-color: var(--to-do-color);
-}
-
-.figure-block, .header-name{
+.header-name{
   position: absolute;
   top: 20px;
   right: 20px;
